@@ -5,7 +5,7 @@ $today = Get-Date
 if ($hour -lt 12) {
   $timeSlot = '上午'
 }
-if ($hour -lt 18 && $hour -ge 12) {
+if (($hour -lt 18) -and ($hour -ge 12)) {
   $timeSlot = '下午'
 }
 if ($hour -ge 18) {
