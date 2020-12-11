@@ -7,7 +7,7 @@ Import-Module posh-git
 Import-Module oh-my-posh
 
 # 设置 PowerShell 主题
-Set-Theme Paradox
+Set-Theme myTheme
 #------------------------------- Import Modules END   -------------------------------
 
 
@@ -80,8 +80,26 @@ function ListDirectory {
     (Get-ChildItem).Name
     Write-Host("")
 }
+# 4.git pull && git push
+function sync {
+    git pull && git push
+}
 Set-Alias -Name ls -Value ListDirectory
 Set-Alias -Name ll -Value Get-ChildItem
+# 3. 查看ip4
+function ip {
+    $ip = ipconfig
+    Write-Host($ip[23])
+}
+# 4.emoji
+$emojis = '😀', '😁', '😂', '😃', '😄', '😅', '😆', '😉', '😊', '😋', '😎', '😍', '🤩', '🤔', '😐', '😑', '😶', '🙄', '😏', '😣', '😥', '😮', '🤐', '😯', '😪', '😫', '🥱', '😴', '😌', '😛', '😜', '😝', '🤤', '😒', '😓', '😔', '😕', '🙃', '🤑', '😲', '🙁', '😖', '😞', '😟', '😤', '😢', '😭', '😦', '😨', '😩', '😬', '😰', '😱', '🥶', '😳', '🤪', '😵', '🤬', '🤒', '🤓', '🥺'
+
+function getRandomEmoji {
+    $emojisLength = $emojis.Length
+    $emojiIndex = Get-Random -Minimum 0 -Maximum $emojisLength
+    $emoji = $emojis[$emojiIndex]
+    return $emoji
+}
 #-------------------------------    Set Alias END     -------------------------------
 
 
